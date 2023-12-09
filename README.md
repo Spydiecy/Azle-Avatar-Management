@@ -60,6 +60,36 @@ The canister uses a workaround to make the `uuid` package work with Azle. The `g
 
 To use this canister, you need to have the DFINITY Canister SDK installed on your machine. You can then deploy the canister to a local or remote network.
 
+- Clone the repo
+
+ ```
+ git clone 
+ ```
+
+- Move to the repo directory
+
+ ```
+ cd Azle-Virtual-Library
+ ```
+
+- Install the packages
+
+ ```
+ npm install
+ ```
+
+- Start the ICP blockchain locally
+
+ ```
+ dfx start --background --clean
+ ```
+
+- Deploy the canister on the local blockchain
+
+ ```
+ dfx deploy
+ ```
+
 ## Contributing
 
 Contributions are welcome! Please read the contributing guidelines before getting started.

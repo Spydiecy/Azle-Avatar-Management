@@ -1,89 +1,69 @@
-# ICP Music App
-This is a simple application for adding public songs and creating personal playlists.
+# Virtual Library Canister
 
-## How to run
+This repository contains the code for a "Virtual Library" canister developed using Azle. The canister allows users to manage a virtual library of books.
 
-The project runs on [AZLE](https://demergent-labs.github.io/azle/the_azle_book.html). To test:
+## Features
 
-- Clone the repo
+The canister provides the following functionalities:
 
-```
-git clone https://github.com/TMCrypto/Music-App.git
-```
+1. **Add a Book**: Users can add a book with a title, author, published year, and summary.
+2. **Update a Book**: Users can update the details of a book.
+3. **Delete a Book**: Users can delete a book from the library.
+4. **Retrieve All Books**: Users can retrieve the details of all books in the library.
+5. **Retrieve a Specific Book**: Users can retrieve the details of a specific book by its id.
 
-- Move to the repo directory
+## Data Structures
 
-```
-cd Music-App
-```
+The canister uses the following data structures:
 
-- Install the packages
+- `Book`: A record that represents a book. Each book has an `id`, `title`, `author`, `publishedYear`, and `summary`.
+- `BookPayload`: A record that represents the payload for adding or updating a book. It includes a `title`, `author`, `publishedYear`, and `summary`.
 
-```
-npm install
-```
+## Functions
 
-- Start the ICP blockchain locally
+The canister provides the following functions:
 
-```
-dfx start --background --clean
-dfx deploy
-```
+- `getBooks`: A query function that retrieves all books.
+ 
+  ```
+  dfx canister call library_app getBooks
+  ```
+- `getBook`: A query function that retrieves a specific book by its id.
 
-- Deploy the canister on the local blockchain
+  ```
+  dfx canister call library_app getBook '("book-id")'
+  ```
+  
+- `addBook`: An update function that adds a book.
 
-```
-dfx deploy
-```
+  ```
+  dfx canister call library_app addBook '(record { title = "<Book Title>"; publishedYear = 2022; author = "<Author Name>"; summary = "<Book Summary>" })'
+  ```
+  
+- `updateBook`: An update function that updates the details of a book.
 
-- Example CLI command that can run the existing functions of the canister (uploadSong, createPlaylist, getSong, getSongs, getPlaylist, getPlaylists, updatePlaylist, addSongsToPlaylist, deletePlaylist, deleteSongFromPlaylist).
+  ```
+  dfx canister call library_app updateBook '("book-id", record { title = "<Book Title>"; publishedYear = 2022; author = "<Author Name>"; summary = "<Book Summary>" })'
+  ```
+  
+- `deleteBook`: An update function that deletes a book.
 
-1. Uploading a song (mimeType examples - audio/mp4, audio/mpeg, audio/wav):
-```
-dfx canister call music_app uploadSong '(record { "fileName"= "<name-of-the-file>.<mimeType>"; "mimeType"= "audio/mp4"; "title"= "<song-title>"; "singers"= vec { "singer1"; "singer2"; etc... }; "genre"= "<song-genre>"; "duration"= <duration-in-seconds>; "releaseDate"= "<song-release-date>"})'
-```
+  ```
+  dfx canister call library_app deleteBook '("book-id")'
+  ```
 
-2. Create a playlist
-```
-dfx canister call music_app createPlaylist '(record { "name"= "Some name"; "description"= "Some description" })'
-```
+## Workaround for UUID Generation
 
-3. Get a specific song from the storage
-```
-dfx canister call music_app getSong '("<song-id>")'
-```
+The canister uses a workaround to make the `uuid` package work with Azle. The `getRandomValues` function returns a `Uint8Array` of 32 random values.
 
-4. Get all songs from the storage
-```
-dfx canister call music_app getSongs '()'
-```
+## Getting Started
 
-5. Get a specific playlist from the storage
-```
-dfx canister call music_app getPlaylist '("<playlist-id>")'
-```
+To use this canister, you need to have the DFINITY Canister SDK installed on your machine. You can then deploy the canister to a local or remote network.
 
-6. Get all playlists from the storage
-```
-dfx canister call music_app getPlaylists '()'
-```
+## Contributing
 
-7. Update the playlist's name or description (or both)
-```
-dfx canister call music_app updatePlaylist '("<playlist-id>", record { "name"= "A new name"; "description"= "A new description" })'
-```
+Contributions are welcome! Please read the contributing guidelines before getting started.
 
-8. Add one or more songs into a playlist
-```
-dfx canister call music_app addSongsToPlaylist '("<playlist-id>", vec { "<song1-id>"; "<song2-id>" })'
-```
+## License
 
-9. Delete a personal playlist
-```
-dfx canister call music_app deletePlaylist '("<playlist-id>")'
-```
-
-10. Delete a specific song from a playlist
-```
-dfx canister call music_app deleteSongFromPlaylist '("<playlist-id>", "<song-id>")'
-```
+This project is licensed under the terms of the MIT license.

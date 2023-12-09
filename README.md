@@ -28,6 +28,7 @@ The canister provides the following functions:
   ```
   dfx canister call library_app getBooks
   ```
+  
 - `getBook`: A query function that retrieves a specific book by its id.
 
   ```

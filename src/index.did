@@ -1,0 +1,22 @@
+type Book = record {
+  id : text;
+  title : text;
+  publishedYear : nat64;
+  author : text;
+  summary : text;
+};
+type BookPayload = record {
+  title : text;
+  publishedYear : nat64;
+  author : text;
+  summary : text;
+};
+type _AzleResult = variant { Ok : Book; Err : text };
+type _AzleResult_1 = variant { Ok : vec Book; Err : text };
+service : () -> {
+  addBook : (BookPayload) -> (_AzleResult);
+  deleteBook : (text) -> (_AzleResult);
+  getBook : (text) -> (_AzleResult) query;
+  getBooks : () -> (_AzleResult_1) query;
+  updateBook : (text, BookPayload) -> (_AzleResult);
+}

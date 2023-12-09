@@ -19,7 +19,7 @@ To use this canister, you need to have the DFINITY Canister SDK installed on you
 - Clone the repo
 
  ```
- git clone 
+ git clone https://github.com/Spydiecy/Azle-Virtual-Library.git
  ```
 
 - Move to the repo directory

@@ -12,6 +12,40 @@ The canister provides the following functionalities:
 4. **Retrieve All Books**: Users can retrieve the details of all books in the library.
 5. **Retrieve a Specific Book**: Users can retrieve the details of a specific book by its id.
 
+## Getting Started
+
+To use this canister, you need to have the DFINITY Canister SDK installed on your machine. You can then deploy the canister to a local or remote network.
+
+- Clone the repo
+
+ ```
+ git clone 
+ ```
+
+- Move to the repo directory
+
+ ```
+ cd Azle-Virtual-Library
+ ```
+
+- Install the packages
+
+ ```
+ npm install
+ ```
+
+- Start the ICP blockchain locally
+
+ ```
+ dfx start --background --clean
+ ```
+
+- Deploy the canister on the local blockchain
+
+ ```
+ dfx deploy
+ ```
+
 ## Data Structures
 
 The canister uses the following data structures:
@@ -56,40 +90,6 @@ The canister provides the following functions:
 ## Workaround for UUID Generation
 
 The canister uses a workaround to make the `uuid` package work with Azle. The `getRandomValues` function returns a `Uint8Array` of 32 random values.
-
-## Getting Started
-
-To use this canister, you need to have the DFINITY Canister SDK installed on your machine. You can then deploy the canister to a local or remote network.
-
-- Clone the repo
-
- ```
- git clone 
- ```
-
-- Move to the repo directory
-
- ```
- cd Azle-Virtual-Library
- ```
-
-- Install the packages
-
- ```
- npm install
- ```
-
-- Start the ICP blockchain locally
-
- ```
- dfx start --background --clean
- ```
-
-- Deploy the canister on the local blockchain
-
- ```
- dfx deploy
- ```
 
 ## Contributing
 

@@ -4,6 +4,7 @@ type Book = record {
   publishedYear : nat64;
   author : text;
   summary : text;
+  authorPrincipal : principal;
 };
 type BookPayload = record {
   title : text;
